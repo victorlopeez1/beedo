@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 20% 6%;
+    --foreground: 210 40% 95%;
+    --card: 220 18% 9%;
+    --card-foreground: 210 40% 95%;
+    --popover: 220 18% 9%;
+    --popover-foreground: 210 40% 95%;
+    --primary: 270 80% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 15% 14%;
+    --secondary-foreground: 210 40% 85%;
+    --muted: 220 15% 14%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 190 90% 55%;
+    --accent-foreground: 220 20% 6%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 16%;
+    --input: 220 15% 14%;
+    --ring: 270 80% 65%;
+    --radius: 0.75rem;
+    --neon-purple: 270 80% 65%;
+    --neon-cyan: 190 90% 55%;
+    --neon-pink: 330 85% 60%;
+    --neon-green: 145 80% 50%;
+    --neon-yellow: 50 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-inter;
+    background-image: 
+      radial-gradient(ellipse at 20% 50%, hsla(270, 80%, 65%, 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, hsla(190, 90%, 55%, 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 80%, hsla(330, 85%, 60%, 0.03) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', monospace;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Neon glow effects */
+.neon-purple {
+  box-shadow: 0 0 20px hsla(270, 80%, 65%, 0.4), 0 0 40px hsla(270, 80%, 65%, 0.2);
+}
+.neon-cyan {
+  box-shadow: 0 0 20px hsla(190, 90%, 55%, 0.4), 0 0 40px hsla(190, 90%, 55%, 0.2);
+}
+.neon-pink {
+  box-shadow: 0 0 20px hsla(330, 85%, 60%, 0.4), 0 0 40px hsla(330, 85%, 60%, 0.2);
+}
+.neon-green {
+  box-shadow: 0 0 20px hsla(145, 80%, 50%, 0.4), 0 0 40px hsla(145, 80%, 50%, 0.2);
+}
+.text-neon-purple { color: hsl(270, 80%, 72%); }
+.text-neon-cyan { color: hsl(190, 90%, 62%); }
+.text-neon-pink { color: hsl(330, 85%, 67%); }
+.text-neon-green { color: hsl(145, 80%, 57%); }
+.text-neon-yellow { color: hsl(50, 95%, 62%); }
+
+.glow-text-purple {
+  text-shadow: 0 0 10px hsla(270, 80%, 65%, 0.8), 0 0 20px hsla(270, 80%, 65%, 0.4);
+}
+.glow-text-cyan {
+  text-shadow: 0 0 10px hsla(190, 90%, 55%, 0.8), 0 0 20px hsla(190, 90%, 55%, 0.4);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+              linear-gradient(135deg, hsl(270,80%,65%), hsl(190,90%,55%), hsl(330,85%,60%)) border-box;
+  border: 1px solid transparent;
+}
+
+/* Piano keys */
+.piano-key-white {
+  background: linear-gradient(180deg, #f8f8f8 0%, #e8e8e8 100%);
+  border: 1px solid #aaa;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3), inset 0 -2px 4px rgba(0,0,0,0.1);
+  transition: all 0.1s ease;
+}
+.piano-key-white.active {
+  background: linear-gradient(180deg, hsl(270,80%,75%) 0%, hsl(270,80%,60%) 100%);
+  box-shadow: 0 0 15px hsla(270, 80%, 65%, 0.8), 0 0 30px hsla(270, 80%, 65%, 0.4), inset 0 2px 4px rgba(0,0,0,0.2);
+}
+.piano-key-black {
+  background: linear-gradient(180deg, #222 0%, #111 100%);
+  border: 1px solid #000;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 6px 8px rgba(0,0,0,0.5), inset 0 -2px 4px rgba(0,0,0,0.3);
+  transition: all 0.1s ease;
+}
+.piano-key-black.active {
+  background: linear-gradient(180deg, hsl(190,90%,40%) 0%, hsl(190,90%,25%) 100%);
+  box-shadow: 0 0 15px hsla(190, 90%, 55%, 0.8), 0 0 30px hsla(190, 90%, 55%, 0.4);
+}
+
+/* Guitar fret */
+.fret-dot {
+  background: radial-gradient(circle, hsl(270,80%,75%) 0%, hsl(270,80%,55%) 100%);
+  box-shadow: 0 0 10px hsla(270, 80%, 65%, 0.8);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: hsl(var(--background)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary)); }
+
+/* Pulse animation for active elements */
+@keyframes pulse-neon {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.pulse-neon { animation: pulse-neon 2s ease-in-out infinite; }
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+.float { animation: float 3s ease-in-out infinite; }
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
